@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Basic HTTP server using Node JS</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M"
+        crossorigin="anonymous">
+</head>
+
+<body class="bg-dark mt-4 text-white">
+    <div class="container">
+        <h2 class="display-4">Basic HTTP Server - Node JS</h2>
+
+        <div class="card p-2 bg-light">
+            <pre>
+/// Create the constants
+const http = require("http");
+const fs = require("fs");
+
+/// set the port and host
+const port = 7868;
+const hostname = "127.0.0.1";
+
+/// 1. Send an sample text
+/// 2. Send the file
+
+/// read the file..
+fs.readFile("index.html", (err, html) => {
+
+    /// check for err
+    if (err) {
+        throw err;
+    }
+    /// create the server
+    const server = http.createServer((req, res) => {
+
+        /// status code
+        res.statusCode = 200;
+
+        /// header
+        /// 1. Send an sample text
+        //res.setHeader("Content-type", "text/plain");
+
+        /// 2. Send the file
+        res.setHeader("Content-type", "text/html");
+
+        /// end
+        /// 1. Send an sample text
+        //res.end("Hello Rafi!");
+
+        /// end
+        /// 2. Send the file
+        res.write(html);
+        res.end();
+    });
+
+    /// set the end - listen 
+    server.listen(port, hostname, () => {
+
+        /// Log some default text...
+        console.log("Server started at http://localhost:" + port + " or http://" + hostname + ":" + port);
+    });
+});                    
+                </pre>
+        </div>
+
+        <div class="card mt-2 p-2 bg-primary">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolores vero at sunt reprehenderit voluptates! Possimus, molestiae
+            vitae. Autem saepe qui aspernatur culpa ducimus aut odio voluptas esse incidunt doloremque est nisi eius nostrum
+            quis eos quibusdam, eum expedita eligendi! Provident modi et dicta facilis deserunt maxime pariatur sit unde
+            explicabo, dolore a aliquam, fuga totam architecto vitae illum suscipit voluptatem quis corrupti sint. Nostrum
+            fugiat eum ad tempora aspernatur, quod veritatis iure quo doloribus, itaque odio tenetur possimus ipsa voluptates
+            sit, eius culpa dolores voluptatem nesciunt eligendi! Expedita architecto excepturi mollitia placeat similique
+            dolorem necessitatibus iure, autem veritatis deserunt praesentium earum unde officia magnam libero vero nihil.
+            Eius aperiam, sapiente quae consequuntur nesciunt asperiores incidunt error voluptates ut voluptas. Quia unde
+            quis, commodi, autem nobis nemo doloremque doloribus dolorum cumque incidunt veniam sunt similique temporibus?
+            Nostrum, nesciunt. Accusamus dignissimos ut aut ducimus officiis corporis eaque molestias odit cum, vero commodi
+            sequi dolores ipsam ipsa labore inventore fugiat? Eaque, amet nam ullam facilis atque sint expedita quod? Facilis
+            magni recusandae atque odit. Nisi voluptates magnam necessitatibus amet. Nihil culpa assumenda, quidem libero
+            veniam in! Dicta distinctio maiores dolores deleniti dolor quasi voluptatem culpa iste, ipsam perferendis dolore
+            hic temporibus, quibusdam pariatur? Enim consectetur cum, minus aperiam qui eveniet ut, rem saepe dolorem eligendi
+            non iusto voluptas, dignissimos ullam earum at voluptatum. Illo expedita consequatur consectetur ipsum nam, aspernatur,
+            quae asperiores soluta quasi voluptatibus sapiente voluptas quas molestias dolorem necessitatibus! Voluptas consequatur
+            non dignissimos labore quam. Officiis exercitationem, eveniet neque aliquam doloremque aut qui est. Impedit,
+            consectetur iste.
+        </div>
+    </div>
+</body>
+
+</html>
